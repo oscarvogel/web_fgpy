@@ -1,0 +1,132 @@
+<section class="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div class="absolute top-20 -left-20 w-96 h-96 bg-green-100/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 -right-20 w-96 h-96 bg-emerald-100/30 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-green-50/20 to-emerald-50/20 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container mx-auto px-6 relative z-10">
+        <!-- Modern Header Section -->
+        <div class="text-center mb-20" data-aos="fade-up">
+            <!-- Overline -->
+            <div class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>Servicios Especializados</span>
+            </div>
+            
+            <!-- Main Title -->
+            <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
+                <span class="block">Nuestros</span>
+                <span class="bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 bg-clip-text text-transparent">
+                    Servicios
+                </span>
+            </h2>
+            
+            <!-- Subtitle -->
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Ofrecemos una <span class="font-semibold text-green-600">amplia gama de servicios forestales</span> 
+                para satisfacer sus necesidades con tecnología de vanguardia y personal altamente capacitado.
+            </p>
+        </div>
+
+        <!-- Services Grid with Modern Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-20">
+            {% for service in servicios.featured %}
+            <div class="group relative" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                <!-- Card Container -->
+                <div class="relative bg-white/70 backdrop-blur-sm border border-white/40 rounded-3xl p-8 hover:bg-white/90 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/10">
+                    
+                    <!-- Card Background Pattern -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-green-50/50 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <!-- Content -->
+                    <div class="relative z-10">
+                        <!-- Icon Container -->
+                        <div class="mb-6">
+                            <div class="relative inline-flex">
+                                <!-- Icon Background with Gradient -->
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-green-500/25 transition-all duration-500 group-hover:scale-110">
+                                    <i class="{{ service.icon }} text-white text-xl"></i>
+                                </div>
+                                <!-- Floating dot -->
+                                <div class="absolute -top-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full opacity-75 group-hover:animate-ping"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Title -->
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-green-700 transition-colors duration-300">
+                            {{ service.title }}
+                        </h3>
+                        
+                        <!-- Description -->
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            {{ service.summary }}
+                        </p>
+                        
+                        <!-- CTA Link -->
+                        <a href="{{ service.url }}" class="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition-all duration-300 group-hover:gap-3">
+                            <span>Conocer más</span>
+                            <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <!-- Hover Border Effect -->
+                    <div class="absolute inset-0 rounded-3xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Enhanced CTA Section -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="600">
+            <div class="bg-white/80 backdrop-blur-sm border border-white/40 rounded-3xl p-12 max-w-2xl mx-auto">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">¿Necesita más información?</h3>
+                <p class="text-lg text-gray-600 mb-8">
+                    Explore todos nuestros servicios especializados y descubra cómo podemos ayudarle a optimizar sus operaciones forestales.
+                </p>
+                
+                <!-- Enhanced CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/componentes/servicios" 
+                       class="group inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-green-500 text-white px-8 py-4 rounded-2xl font-bold hover:shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:-translate-y-1">
+                        <span>Ver todos los servicios</span>
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="/componentes/contacto" 
+                       class="group inline-flex items-center gap-3 bg-white/90 backdrop-blur-sm border border-gray-200 text-gray-700 px-8 py-4 rounded-2xl font-bold hover:bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span>Contactar ahora</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Custom animations for services */
+@keyframes float-up {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.service-card-hover {
+    animation: float-up 3s ease-in-out infinite;
+}
+
+/* Staggered animation for service cards */
+.service-card:nth-child(1) { animation-delay: 0s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.4s; }
+.service-card:nth-child(4) { animation-delay: 0.6s; }
+.service-card:nth-child(5) { animation-delay: 0.8s; }
+.service-card:nth-child(6) { animation-delay: 1s; }
+</style>

@@ -1,0 +1,47 @@
+
+{
+    "featured": [
+        {
+            "title": "Trozado de Madera",
+            "summary": "Optimizamos el proceso de corte para facilitar el transporte y la manipulación de la madera.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-tree"
+        },
+        {
+            "title": "Generacion de Chips de Biomasa",
+            "summary": "Transformamos residuos forestales en chips de alta calidad para energía renovable.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-industry"
+        },
+        {
+            "title": "Mantenimiento de Caminos",
+            "summary": "Garantizamos la durabilidad y el acceso seguro en caminos forestales.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-road"
+        },
+        {
+            "title": "Transporte Forestal",
+            "summary": "Traslado eficiente y seguro de productos forestales con vehículos adaptados.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-truck"
+        },
+        {
+            "title": "Planes de Abastecimiento",
+            "summary": "Planificación estratégica para un suministro continuo y sostenible de recursos.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-clipboard-list"
+        },
+        {
+            "title": "Descarga de Madera",
+            "summary": "Manejo eficiente y seguro de la madera durante la descarga de camiones.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-dolly-flatbed"
+        },
+        {
+            "title": "Fletes de Máquinas",
+            "summary": "Traslado seguro y eficiente de maquinaria pesada con planchas transportadoras.",
+            "url": "/componentes/servicios",
+            "icon": "fas fa-truck-moving"
+        }
+    ]
+}

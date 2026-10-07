@@ -1,0 +1,43 @@
+
+    <section class="relative w-full h-[500px] overflow-hidden shadow-md" data-aos="fade-up">
+      <!-- Video de fondo -->
+      <div class="absolute inset-0">
+        <video
+          class="w-full h-full object-cover transition-transform duration-300 ease-out"
+          autoplay
+          muted
+          loop
+          preload="metadata"
+          poster="/assets/images/preview-video.jpg"
+        >
+          <source src="/assets/videos/hero.mp4" type="video/mp4" />
+          Tu navegador no soporta la reproducción de video.
+        </video>
+    
+        <!-- Overlay degradado -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent pointer-events-none transition duration-300"></div>
+    
+        <!-- Texto sobre el video -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <h2 class="text-white text-lg md:text-xl font-semibold drop-shadow-lg">
+            Visita todos nuestros servicios
+          </h2>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Script de AOS -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.querySelector('video');
+        video.controls = false;
+        video.play();
+    
+        AOS.init({
+          duration: 800,
+          once: true,
+          easing: 'ease-in-out'
+        });
+      });
+    </script>
+    

@@ -1,0 +1,26 @@
+[
+    {
+      "image": "/assets/images/slider1.jpg",
+      "alt": "Imagen de apeo y transporte",
+      "title": "Apeo y Transporte Eficiente",
+      "description": "Soluciones logísticas para el traslado de su madera.",
+      "buttonText": "Ver más",
+      "buttonLink": "/servicios/#apeo"
+    },
+    {
+      "image": "/assets/images/slider2.jpg",
+      "alt": "Cosecha forestal",
+      "title": "Cosecha Forestal",
+      "description": "Cosecha de madera en pie, con maquinaria especializada y personal altamente capacitado.",
+      "buttonText": "Ver más",
+      "buttonLink": "/servicios/#preparacion"
+    },
+    {
+      "image": "/assets/images/slider3.jpg",
+      "alt": "Transporte de vehiculos",
+      "title": "Transporte de vehículos y Maquinaria",
+      "description": "Transporte de vehículos y maquinaria forestal, ofreciendo soluciones seguras y eficientes para el traslado de equipos pesados, garantizando la integridad de su maquinaria durante todo el proceso.",
+      "buttonText": "Ver más",
+      "buttonLink": "/servicios/#biomasa"
+    }
+  ]

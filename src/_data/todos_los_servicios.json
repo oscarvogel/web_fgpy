@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Trozado de madera con garra trozadora",
+    "description": "Servicio especializado en el trozado de madera utilizando una garra trozadora, diseñada para optimizar el proceso de corte, facilitar el transporte y la manipulación de la madera. Este método asegura precisión, eficiencia y seguridad en las operaciones forestales, adaptándose a diferentes tipos de madera y necesidades específicas del cliente.",
+    "image": "/assets/images/servicios/garra_trozadora.jpg",
+    "number": "01"
+  },
+  {
+    "title": "Generación de chips de biomasa",
+    "description": "Servicio de generación de chips de biomasa a partir de residuos forestales y subproductos de la industria maderera. Este servicio incluye la recolección, procesamiento y transformación de materiales en chips de alta calidad, ideales para su uso en sistemas de energía renovable y calefacción. Nuestro enfoque garantiza eficiencia, sostenibilidad y cumplimiento de normativas ambientales.",
+    "image": "/assets/images/servicios/chipeado.jpg",
+    "number": "02"
+  },
+  {
+    "title": "Mantenimiento y consolidado de caminos forestales",
+    "description": "Mantenimiento y consolidado de caminos forestales para garantizar su durabilidad, mejorar el acceso y facilitar las operaciones forestales, asegurando un tránsito seguro y eficiente.",
+    "image": "/assets/images/servicios/caminos_forestales.jpg",
+    "number": "03"
+  },
+  {
+    "title": "Transporte Forestal",
+    "description": "Servicio de transporte forestal especializado en el traslado eficiente y seguro de madera y otros productos forestales. Utilizamos vehículos y equipos adaptados a las condiciones del terreno, garantizando la integridad de la carga y cumpliendo con los estándares ambientales y de seguridad. Este servicio está diseñado para optimizar la logística y satisfacer las necesidades específicas de cada cliente.",  
+    "image": "/assets/images/servicios/transporte_forestal.jpg",
+    "number": "04"
+  },
+  {
+    "title": "Planes de abastecimiento",
+    "description": "Servicio de planes de abastecimiento diseñado para garantizar un suministro continuo y eficiente de recursos forestales. Este servicio incluye la planificación estratégica, evaluación de recursos disponibles, coordinación logística y cumplimiento de normativas ambientales. Nuestro enfoque asegura la sostenibilidad y la optimización de los procesos para satisfacer las necesidades específicas de cada cliente.",  
+    "image": "/assets/images/servicios/planes_abastecimiento.jpg",
+    "number": "05"
+  },
+  {
+    "title": "Descarga de madera de camiones con garra Forestal",
+    "description": "Servicio especializado en la descarga de madera de camiones utilizando una garra forestal. Este método asegura un manejo eficiente, seguro y preciso de la madera, optimizando tiempos y reduciendo riesgos durante el proceso de descarga. Diseñado para adaptarse a diferentes tipos de carga y necesidades específicas del cliente.",  
+    "image": "/assets/images/servicios/descarga_madera.jpg",
+    "number": "06"
+  },
+  {
+    "title": "Fletes de máquinas con plancha transportadora",
+    "description": "Servicio de fletes de máquinas utilizando planchas transportadoras especializadas. Este servicio está diseñado para garantizar el traslado seguro y eficiente de maquinaria pesada, adaptándose a las necesidades específicas de cada cliente y cumpliendo con los estándares de seguridad y normativas vigentes.",  
+    "image": "/assets/images/servicios/flete_maquinas.jpg",
+    "number": "07"
+  }
+]

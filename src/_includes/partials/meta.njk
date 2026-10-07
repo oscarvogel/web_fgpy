@@ -1,0 +1,146 @@
+{% set pageTitle = title + ' | ' + site.name %}
+{% set pageDescription = description or site.description %}
+{% set pageUrl = site.url + page.url %}
+{% set pageImage = image or site.url + '/assets/images/fgpy.png' %}
+
+<!-- SEO Fundamentales -->
+<meta name="description" content="{{ pageDescription }}">
+<meta name="keywords" content="{{ keywords or 'chips de biomasa, generación chips forestales, biomasa energía renovable, chips madera Paraguay, trozado madera, transporte forestal, mantenimiento caminos forestales, servicios forestales Paraguay' }}">
+<meta name="author" content="{{ site.name }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="language" content="es">
+<meta name="geo.region" content="PY-10">
+<meta name="geo.placename" content="Encarnación">
+<meta name="geo.position" content="-27.330047;-55.865791">
+<link rel="canonical" href="{{ pageUrl }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ pageUrl }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ pageDescription }}">
+<meta property="og:image" content="{{ pageImage }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:locale" content="es_PY">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{ pageUrl }}">
+<meta name="twitter:title" content="{{ pageTitle }}">
+<meta name="twitter:description" content="{{ pageDescription }}">
+<meta name="twitter:image" content="{{ pageImage }}">
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "description": "{{ site.description }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/assets/images/fgpy.png",
+  "image": "{{ site.url }}/assets/images/fgpy.png",
+  "telephone": "{{ site.phone }}",
+  "email": "{{ site.email }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Edificio La Soñada, Calle Jóvenes por la democracia esq Constitución - Nacional",
+    "addressLocality": "Encarnación",
+    "addressRegion": "Itapúa",
+    "addressCountry": "PY"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-27.330047",
+    "longitude": "-55.865791"
+  },
+  "sameAs": [
+    "{{ site.social.instagram }}",
+    "{{ site.social.whatsapp }}"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "{{ site.phone }}",
+    "contactType": "customer service",
+    "areaServed": "PY",
+    "availableLanguage": ["Spanish"]
+  }
+}
+</script>
+
+{% if page.url == '/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ site.name }}",
+  "description": "{{ site.description }}",
+  "url": "{{ site.url }}",
+  "telephone": "{{ site.phone }}",
+  "email": "{{ site.email }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Edificio La Soñada, Calle Jóvenes por la democracia esq Constitución - Nacional",
+    "addressLocality": "Encarnación",
+    "addressRegion": "Itapúa",
+    "postalCode": "6000",
+    "addressCountry": "PY"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-27.330047",
+    "longitude": "-55.865791"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "priceRange": "$$",
+  "image": "{{ site.url }}/assets/images/fgpy.png",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios Forestales",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Generación de Chips de Biomasa",
+          "description": "Producción de chips de biomasa de alta calidad para energía renovable a partir de residuos forestales"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trozado de Madera",
+          "description": "Servicio de trozado de madera con garra trozadora especializada"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Transporte Forestal",
+          "description": "Transporte especializado de madera y productos forestales"
+        }
+      }
+    ]
+  }
+}
+</script>
+{% endif %}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ERT2VW5CWH"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ERT2VW5CWH');
+</script>

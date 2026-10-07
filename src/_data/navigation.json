@@ -1,0 +1,6 @@
+[
+    { "url": "/", "text": "Inicio" },
+    { "url": "/componentes/servicios", "text": "Servicios" },
+    { "url": "/componentes/vision_y_mision", "text": "Vision" },
+    { "url": "/componentes/contacto", "text": "Contacto" }
+  ]

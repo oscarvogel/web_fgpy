@@ -1,0 +1,22 @@
+# robots.txt para Forestal Paraguay
+# Este archivo indica a los motores de búsqueda cómo rastrear el sitio
+
+User-agent: *
+Allow: /
+
+# Evitar rastreo de archivos técnicos
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Permitir explícitamente recursos importantes
+Allow: /assets/images/
+
+# Sitemap
+Sitemap: https://forestalparaguay.com/sitemap.xml
+
+# Configuración específica para bots principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
