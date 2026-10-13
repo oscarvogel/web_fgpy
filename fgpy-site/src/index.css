@@ -1,0 +1,117 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+
+/* Semantic tokens: components use these names, never raw colors. */
+@theme {
+  /* Near-black with a faint forest tint; accents share the logo's hue (140°), desaturated instead of neon. */
+  --color-surface: #0d0f0d;
+  --color-surface-raised: #151815;
+  --color-surface-inverse: #edeae3;
+  --color-ink: #f2f2ee;
+  --color-ink-muted: #8f948e;
+  --color-ink-inverse: #0d0f0d;
+  --color-brand: #008f2f;
+  --color-brand-strong: #00702a;
+  --color-brand-soft: #5aaf76;
+  --color-line: #252a25;
+  --color-warning: #e0b341;
+
+  --font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    scrollbar-color: var(--color-line) var(--color-surface);
+    accent-color: var(--color-brand-soft);
+    caret-color: var(--color-brand-soft);
+  }
+  ::selection {
+    background: var(--color-brand-soft);
+    color: var(--color-ink-inverse);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-soft);
+    outline-offset: 3px;
+  }
+  a {
+    text-underline-offset: 6px;
+  }
+  /* Semi-condensed headlines read as industrial signage; body copy stays at normal width. */
+  h1, h2, h3 {
+    font-stretch: 87.5%;
+  }
+}
+
+/* Metadata labels (field names, tags, footer headings). Mono is reserved for figures and coordinates. */
+@utility label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Secondary text link: a quiet full-width rule; on hover/focus an accent rule draws over it from the left. */
+@utility link {
+  --rule: color-mix(in oklab, currentColor 35%, transparent);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding-bottom: 0.3em;
+  background:
+    linear-gradient(var(--color-brand-soft), var(--color-brand-soft)) left bottom / 0% 1px no-repeat,
+    linear-gradient(var(--rule), var(--rule)) left bottom / 100% 1px no-repeat;
+  transition: color 0.3s var(--ease-out-expo), background-size 0.6s var(--ease-out-expo);
+  &:hover,
+  &:focus-visible {
+    color: var(--color-brand-soft);
+    background-size: 100% 1px, 100% 1px;
+  }
+}
+
+/* Primary action: light on brand-strong (5.6:1). Hover wipes brand-soft in from the left with dark text (7.2:1)
+   and nudges the arrow forward; the arrow is decorative (empty alt text after the slash). */
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.4rem;
+  background:
+    linear-gradient(var(--color-brand-soft), var(--color-brand-soft)) left / 0% 100% no-repeat,
+    var(--color-brand-strong);
+  color: var(--color-ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background-size 0.6s var(--ease-out-expo), color 0.3s var(--ease-out-expo);
+  &::after {
+    content: '→' / '';
+    transition: translate 0.6s var(--ease-out-expo);
+  }
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 100%;
+    color: var(--color-ink-inverse);
+  }
+  &:hover::after,
+  &:focus-visible::after {
+    translate: 0.25rem 0;
+  }
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+/* Menu toggle turns dark over light sections while closed (StaggeredMenu colors it inline, hence !important). */
+[data-nav-theme="light"] .sm-toggle[aria-expanded="false"] {
+  color: var(--color-ink-inverse) !important;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
