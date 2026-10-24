@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/img/fgpy.ico" />
+    <link rel="apple-touch-icon" href="/img/fgpy.png" />
     <!-- Hero photo is a CSS background set by JS, so the browser can't discover it early on its own. -->
     <link rel="preload" as="image" href="/img/slider2.webp" type="image/webp" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,6 +23,35 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Forwarder de Forestal Paraguay cargando troncos en una plantación de eucalipto" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Local business data for Google (Maps, local results). Keep in sync with src/content/site.ts. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Forestal Paraguay",
+        "description": "Servicios forestales integrales y generación de chips de biomasa para la industria.",
+        "url": "https://forestalparaguay.com/",
+        "logo": "https://forestalparaguay.com/img/fgpy.png",
+        "image": "https://forestalparaguay.com/img/og.jpg",
+        "telephone": "+595973524313",
+        "email": "administracion@forestalparaguay.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Edificio La Soñada, Jóvenes por la Democracia esq. Constitución",
+          "addressLocality": "Encarnación",
+          "addressRegion": "Itapúa",
+          "addressCountry": "PY"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": -27.3167, "longitude": -55.8667 },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Itapúa, Paraguay" },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,5 +1,7 @@
 import { nav, site } from '../content/site'
 
+const year = new Date().getFullYear()
+
 export default function Footer() {
   return (
     <footer id="contacto" className="px-6 pb-28 md:px-12 md:pb-10">
@@ -37,7 +39,7 @@ export default function Footer() {
         FGPY
       </p>
       <div className="mt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 label text-ink-muted">
-        <p>© {new Date().getFullYear()} Forestal Paraguay</p>
+        <p>© {year} Forestal Paraguay</p>
         <p className="font-mono normal-case tracking-normal">27°19′S 55°52′W</p>
         <a href="#contenido" className="py-2 transition-colors duration-300 hover:text-brand-soft">Volver arriba ↑</a>
       </div>

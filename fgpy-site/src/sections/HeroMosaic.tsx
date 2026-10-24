@@ -118,7 +118,7 @@ export default function HeroMosaic() {
   }, [])
 
   return (
-    <section ref={root} id="inicio" className="relative h-[220svh]" aria-label="Presentación">
+    <section ref={root} id="inicio" className="relative h-[160svh]" aria-label="Presentación">
       <div className="sticky top-0 h-svh overflow-hidden">
         <Stage front={false} />
 
@@ -139,7 +139,11 @@ export default function HeroMosaic() {
           aria-hidden
           className="pointer-events-none absolute inset-x-0 bottom-0 z-30 grid items-end gap-5 bg-gradient-to-t from-surface via-surface/80 to-transparent px-6 pt-32 pb-10 opacity-0 md:grid-cols-3 md:px-12"
         >
-          <span className="max-w-xs text-lg leading-snug text-ink">Chips de biomasa y servicios forestales para la industria.</span>
+          {/* Names the company in the first frame; the FGPY wordmark alone doesn't say who this is. */}
+          <span className="max-w-xs text-lg leading-snug text-ink">
+            <span className="mb-2 block label text-brand-soft">Forestal Paraguay</span>
+            Chips de biomasa y servicios forestales para la industria.
+          </span>
           <span className="hidden text-center label text-ink md:block">Scroll</span>
           <span className="font-mono text-[11px] uppercase tracking-wider text-ink-muted md:text-right">Encarnación, Itapúa · 27°19′S 55°52′W</span>
         </div>

@@ -17,7 +17,7 @@ const socials = [
 // Colors mirror the @theme tokens in index.css (the component takes raw values).
 export default function Nav() {
   const [open, setOpen] = useState(false)
-  // CTAs step aside while the quote form itself is on screen; the mobile bar also waits out the hero,
+  // CTAs step aside while the quote form itself is on screen, and both wait out the hero,
   // which carries its own "Pedir cotización" button.
   const [atQuote, setAtQuote] = useState(false)
   const [atHero, setAtHero] = useState(true)
@@ -82,7 +82,7 @@ export default function Nav() {
 
       <div
         aria-hidden
-        className={`pointer-events-none fixed top-[1.55rem] left-1/2 z-30 hidden -translate-x-1/2 items-center gap-3 transition-[opacity,color] duration-500 md:flex ${chapter && !open ? '' : 'opacity-0'} ${light ? 'text-ink-inverse' : 'text-ink'}`}
+        className={`pointer-events-none fixed top-12 left-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-3 transition-[opacity,color] duration-500 md:flex ${chapter && !open ? '' : 'opacity-0'} ${light ? 'text-ink-inverse' : 'text-ink'}`}
       >
         <span className="font-mono text-xs tabular-nums">{chapter?.n}</span>
         <span className="relative h-px w-16 overflow-hidden bg-current/25">
@@ -93,7 +93,7 @@ export default function Nav() {
 
       <a
         href="#cotizar"
-        className={`fixed top-[1.55rem] right-36 z-30 hidden link transition-[opacity,color] duration-500 md:block ${light ? 'text-ink-inverse' : 'text-ink'} ${hide ? 'pointer-events-none opacity-0' : ''}`}
+        className={`fixed top-[calc(3rem+0.15em)] right-36 -translate-y-1/2 z-30 hidden link transition-[opacity,color] duration-500 md:block ${light ? 'text-ink-inverse' : 'text-ink'} ${hide || atHero ? 'pointer-events-none opacity-0' : ''}`}
       >
         Pedir cotización
       </a>
