@@ -38,9 +38,7 @@ export default function Process() {
     <section ref={root} data-chapter="Proceso" aria-label="Nuestro proceso">
       <ScrollExpand
         useWindowScroll
-        mediaType="video"
-        src="/video/video_fg.mp4"
-        poster="/img/slider1.webp"
+        src="/img/servicios/chipeado.webp"
         title="Del monte a la planta."
         startRadius={2}
         overlayScrim={1}
