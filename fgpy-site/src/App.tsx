@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './sections/Footer'
-import { useSmoothScroll } from './lib/smooth'
+import { useSmoothScroll, useHashScroll } from './lib/smooth'
 import { useReveals } from './lib/reveal'
 
 export default function App() {
   useSmoothScroll()
+  useHashScroll()
   useReveals()
   return (
     <>
