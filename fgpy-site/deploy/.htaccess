@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Forestal Paraguay · hosting compartido (Ferozo / Hostmar)
+#
+# Esta carpeta pública (docroot) la comparten este sitio y las reglas de
+# redirección de los dominios hermanos del mismo hosting. Al reemplazar el
+# sitio por el nuevo (fgpy-site, Vite + React) hay que CONSERVAR esas reglas.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─── Dominios hermanos en el mismo hosting ───────────────────────────────────
+# Reglas originales, sin tocar. Apuntan a los vhosts de viajes. y dashboard.
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^viajes.forestalparaguay.com [OR]
+RewriteCond %{HTTP_HOST} ^www.viajes.forestalparaguay.com$
+RewriteRule ^(.*)$ http://extranet-fasa.ddns.net [R=301,L]
+RewriteCond %{HTTP_HOST} ^dashboard.forestalparaguay.com [OR]
+RewriteCond %{HTTP_HOST} ^www.dashboard.forestalparaguay.com$
+RewriteRule ^(.*)$ http://extranet-fasa.ddns.net [R=301,L]
+
+# ─── Forestal Paraguay (www.)forestalparaguay.com · sitio nuevo ──────────────
+# 1) Las URLs del sitio anterior de Eleventy pasan a las anclas del sitio nuevo.
+#    Se hacen con RewriteRule (y no RedirectMatch) para poder condicionar por
+#    host: así no interceptan las URLs de los dominios hermanos de arriba.
+#
+#    El flag NE (noescape) es obligatorio: sin él mod_rewrite escapa el "#" del
+#    ancla como "%23" y el Location queda como /%23servicios, que el SPA
+#    interpreta como una ruta inexistente y termina en la 404.
+RewriteCond %{HTTP_HOST} ^(www\.)?forestalparaguay\.com$
+RewriteRule ^componentes/servicios/?$       /#servicios [R=301,L,NE]
+RewriteCond %{HTTP_HOST} ^(www\.)?forestalparaguay\.com$
+RewriteRule ^componentes/vision_y_mision/?$ /#nosotros  [R=301,L,NE]
+RewriteCond %{HTTP_HOST} ^(www\.)?forestalparaguay\.com$
+RewriteRule ^componentes/contacto/?$       /#cotizar   [R=301,L,NE]
+
+# 2) Rewrite del SPA: toda ruta que no sea un archivo real devuelve index.html,
+#    para que la 404 la muestre el propio sitio y no Apache.
+RewriteCond %{HTTP_HOST} ^(www\.)?forestalparaguay\.com$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]

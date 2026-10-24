@@ -3,3 +3,7 @@ _site/
 .DS_Store
 Thumbs.db
 npm-debug.log*
+
+# Deploy a producción: credenciales FTP y backups del hosting
+.deploy-ftp.txt
+backups/
