@@ -137,16 +137,93 @@ Commit propio en la rama de integración, sobre `b82a856`:
 
 Total que sale del repo y del deploy: **~20,8 MB**.
 
+## Publicación en producción
+
+Publicado el **24/10/2026** en <https://forestalparaguay.com/>.
+
+### Hosting
+
+- **Hostmar / Ferozo**, Apache, IP `200.58.111.122`, NS `ns3/ns4.hostmar.com`.
+- El FTP está en `c2860520.ferozo.com` y **exige TLS explícito**: en FTP plano responde
+  `550 SSL/TLS required on the control channel`.
+- **No hay SSH**: puerto 22 cerrado, y los puertos de cPanel (2082/2083/2086/2087/2095/2096)
+  también. La única vía es FTP en el 21.
+
+### El `.htaccess` de producción manejaba otros dominios
+
+El docroot es compartido con `viajes.forestalparaguay.com` y `dashboard.forestalparaguay.com`
+(que además apuntan a otro server, `186.5.245.12`). El `.htaccess` que estaba vivo redireccionaba
+esos hosts a `http://extranet-fasa.ddns.net`.
+
+**Por eso el `.htaccess` nuevo es un merge, no un reemplazo**: esas reglas se conservan
+verbatim. `deploy/.htaccess` es el archivo que se sube.
+
+### Qué cambió en producción
+
+| | Antes | Después |
+|---|---|---|
+| Sitio | Eleventy (multi-página) | `fgpy-site` (Vite + React, una página) |
+| Archivos | 32 (23,1 MB) | 24 (3,26 MB) |
+| `robots.txt` | 19 líneas con `Disallow: /assets/js/` | 3 líneas |
+| `sitemap.xml` | 4 URLs de `/componentes/*` | 1 URL (`/`) |
+| `index.html` | "Inicio \| Forestal Paraguay" | "Forestal Paraguay \| Servicios forestales…" |
+| 404 | error de Apache | página 404 del propio sitio (rewrite del SPA) |
+| URLs viejas | 200 | **301** a `/#servicios`, `/#nosotros`, `/#cotizar` |
+
+### Dos bugs que aparecieron al publicar
+
+1. **El ancla salía URL-encoded.** `RewriteRule ... /#servicios [R=301,L]` produce
+   `Location: https://forestalparaguay.com/%23servicios`, que el SPA lee como una ruta
+   inexistente y termina en la 404. Se arregla con el flag `NE` (noescape).
+2. **La app no manejava el hash al cargar.** El navegador no puede saltar al ancla porque el
+   elemento lo dibuja React después del primer render, así que los 301 caían en el hero.
+   Se agregó `useHashScroll()` (`src/lib/smooth.ts`): espera a que carguen las imágenes (arriba
+   están y cambian la altura de la página) y después lleva el scroll al destino.
+   Corregido en el PR #3.
+
+### Verificaciones
+
+| Qué | Resultado |
+|---|---|
+| `npm run build` | OK |
+| `GET /` | 200, el sitio nuevo renderiza |
+| `GET /sitemap.xml`, `/robots.txt` | 200 |
+| `GET /componentes/servicios/` | **301** → `https://forestalparaguay.com/#servicios` |
+| `GET /ruta-inexistente` | 200 con el index del SPA (rewrite funcionando) |
+| Consola del navegador en producción | 0 errores, 0 warnings |
+| Requests fallidos / 4xx / 5xx | 0 |
+| `viajes.` y `dashboard.forestalparaguay.com` | siguen respondiendo 200, sin cambios |
+
+### Rollback
+
+Dos backups con sello de tiempo en `backups/` (ignorado por git):
+
+- `20261024-190122-pre-deploy-fgpy/` — el sitio de Eleventy completo (33 archivos, 23,1 MB).
+- `20261024-191135-pre-deploy-fgpy/` — el sitio nuevo antes del fix del ancla (27 archivos).
+
+Para volver atrás: `python tools/deploy.py upload --dist backups/<timestamp>-pre-deploy-fgpy`.
+El `.htaccess` viejo hay que subirlo aparte (el `upload` no pisa `.htaccess`).
+
+### Cómo se publica de acá en adelante
+
+```sh
+cd fgpy-site
+npm run build
+python tools/deploy.py backup   --config ../../.deploy-ftp.txt
+python tools/deploy.py upload   --config ../../.deploy-ftp.txt --dist dist --htaccess deploy/.htaccess
+python tools/deploy.py verify   --config ../../.deploy-ftp.txt
+```
+
+Credenciales en `.deploy-ftp.txt` en la raíz del repo (ignorado por git).
+
 ## Pendientes
 
 - [ ] Corregir el solapamiento del nav en secciones claras y en el footer.
 - [ ] Roman: elegir otra foto para la sección Proceso (hoy repite `chipeado.webp`).
 - [ ] Definir el bundle: code splitting real o subir `chunkSizeWarningLimit` a propósito.
-- [ ] **Definir el destino del sitio**: hoy conviven el sitio Eleventy de la raíz y `fgpy-site`
-      (Vite + React). Hay que decidir cuál se publica y qué pasa con el otro.
-- [ ] Publicación real: el README del PR describe bien `dist/` → `public_html`, el rewrite de
-      todas las rutas a `index.html` (Apache y Nginx) y dónde están los datos de contacto, pero
-      falta la prueba contra el hosting definitivo.
-- [ ] Verificar en móvil (en esta revisión no se pudo cambiar el viewport del navegador).
-- [ ] Decidir qué pasa con los PRs #1 y #2 en GitHub: al mergear sus commits, GitHub los marca
-      como merged automáticamente.
+- [ ] **El sitio de Eleventy de la raíz quedó sin publicar**: `fgpy-site` lo reemplazó en
+      producción. Definir qué pasa con el código de la raíz (se puede borrar o archivar).
+- [ ] Verificar en móvil (no se pudo cambiar el viewport del navegador en esta revisión).
+- [ ] Avisar a Google del cambio de sitemap (Search Console).
+- [ ] Los dominios `viajes.` y `dashboard.forestalparaguay.com` siguen apuntando a
+      `186.5.245.12`; sus reglas en el `.htaccess` de este hosting quedaron como estaban.
