@@ -10,7 +10,7 @@ const steps = [
   { t: 'Entrega en planta', d: 'Descarga con garra' },
 ]
 
-// In viewport heights: scroll spent expanding the video, then scroll spent walking the chain while it stays pinned.
+// In viewport heights: scroll spent expanding the image, then scroll spent walking the chain while it stays pinned.
 const EXPAND = 1.2
 const HOLD = 2
 
