@@ -41,6 +41,7 @@ export default function Footer() {
       <div className="mt-8 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 label text-ink-muted">
         <p>© {year} Forestal Paraguay</p>
         <p className="font-mono normal-case tracking-normal">27°19′S 55°52′W</p>
+        <a href="https://github.com/romanvsc" target="_blank" rel="noreferrer" className="py-2 transition-colors duration-300 hover:text-brand-soft">Sitio por Román Vogel Corach</a>
         <a href="#contenido" className="py-2 transition-colors duration-300 hover:text-brand-soft">Volver arriba ↑</a>
       </div>
     </footer>
